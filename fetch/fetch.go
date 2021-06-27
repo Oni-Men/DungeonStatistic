@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"jp/thelow/static/model"
 	"log"
 	"net/http"
 	"strings"
-	"thelow/survey/model"
 	"time"
 )
 

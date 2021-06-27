@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"thelow/survey/fetch"
-	"thelow/survey/model"
+	"jp/thelow/static/fetch"
+	"jp/thelow/static/model"
 )
 
 var (
