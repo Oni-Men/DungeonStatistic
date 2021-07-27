@@ -1,7 +1,11 @@
 package fetch
 
 import (
+	"encoding/json"
 	"fmt"
+	"jp/thelow/static/model"
+	"log"
+	"net/url"
 	"strings"
 	"time"
 )
@@ -17,19 +21,30 @@ const ONE_DAY LookBackType = "1d"
 const TWO_DAY LookBackType = "2d"
 
 type Queries struct {
-	Service     string        `label:"service"`
-	Operation   string        `label:"operation"`
-	Limit       int           `label:"limit"`
-	Offset      int           `label:"offset"`
-	Start       time.Time     `label:"start"`
-	End         time.Time     `label:"end"`
-	MinDuration time.Duration `label:"minDuration"`
-	MaxDuration time.Duration `label:"maxDuration"`
-	LookBack    LookBackType  `label:"lookback"`
+	Service     string             `label:"service"`
+	Operation   string             `label:"operation"`
+	Limit       int                `label:"limit"`
+	Offset      int                `label:"offset"`
+	Start       time.Time          `label:"start"`
+	End         time.Time          `label:"end"`
+	Tags        *map[string]string `label:"tags"`
+	MinDuration time.Duration      `label:"minDuration"`
+	MaxDuration time.Duration      `label:"maxDuration"`
+	LookBack    LookBackType       `label:"lookback"`
 }
 
-func (q *Queries) ToQuery() string {
-	res := make([]string, 0, 9)
+func (q *Queries) Execute(host string) *model.Traces {
+	req := endpoint(host, "traces") + "?" + q.Serialize()
+	res := new(model.Traces)
+	body := get(req)
+	if err := json.Unmarshal(body, res); err != nil {
+		log.Fatalf(err.Error())
+	}
+	return res
+}
+
+func (q *Queries) Serialize() string {
+	res := make([]string, 0, 10)
 	res = append(res, fmt.Sprintf("service=%s", q.Service))
 	res = append(res, fmt.Sprintf("operation=%s", q.Operation))
 	res = append(res, fmt.Sprintf("limit=%d", q.Limit))
@@ -52,6 +67,15 @@ func (q *Queries) ToQuery() string {
 		res = append(res, fmt.Sprintf("lookback=%s", q.LookBack))
 	} else {
 		res = append(res, "lookback")
+	}
+
+	if q.Tags != nil {
+		tags := make([]string, 0, len(*q.Tags))
+		for k, v := range *q.Tags {
+			tags = append(tags, fmt.Sprintf("%s=%s", k, v))
+		}
+		escaped := url.QueryEscape(strings.Join(tags, ","))
+		res = append(res, escaped)
 	}
 
 	return strings.Join(res, "&")

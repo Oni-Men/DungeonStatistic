@@ -1,7 +1,6 @@
 package fetch
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"jp/thelow/static/model"
@@ -11,27 +10,8 @@ import (
 	"time"
 )
 
-func FetchTraces(host string, start, end time.Time) *model.Traces {
-	q := Queries{
-		Service:   "server1",
-		Operation: "dungeon",
-		Limit:     100,
-		Offset:    0,
-		Start:     start,
-		End:       end,
-	}
-
-	return traces(host, q)
-}
-
-func traces(host string, q Queries) *model.Traces {
-	req := endpoint(host, "traces") + "?" + q.ToQuery()
-	res := new(model.Traces)
-	body := get(req)
-	if err := json.Unmarshal(body, res); err != nil {
-		log.Fatalf(err.Error())
-	}
-	return res
+func FetchTraces(host string, q *Queries) *model.Traces {
+	return q.Execute(host)
 }
 
 func get(url string) []byte {
@@ -51,4 +31,14 @@ func get(url string) []byte {
 
 func endpoint(host string, query ...string) string {
 	return fmt.Sprintf("%s/api/%s", host, strings.Join(query, "/"))
+}
+
+func StartOfMonth(year, month int) time.Time {
+	return time.Date(year, time.Month(month), 1, 0, 0, 0, 0, time.Local)
+}
+
+func EndOfMonth(year, month int) time.Time {
+	next := time.Date(year, time.Month(month+1), 1, 0, 0, 0, 0, time.Local)
+	next.Add(-1 * time.Second)
+	return next
 }

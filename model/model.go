@@ -6,12 +6,6 @@ type JaegerRes struct {
 	Offset int `json:"offset"`
 }
 
-type Ref struct {
-	RefType string `json:"refType"`
-	TraceID string `json:"traceID"`
-	SpanID  string `json:"spanID"`
-}
-
 type Tag struct {
 	Key   string
 	Value string
@@ -20,6 +14,14 @@ type Tag struct {
 type Log struct {
 	Timestamp uint64
 	Fields    []Tag
+}
+
+func (log *Log) GetValue(key string) *string {
+	return GetValueFromTags(log.Fields, key)
+}
+
+func (log *Log) ContainsKey(key string) bool {
+	return TagContainsKey(log.Fields, key)
 }
 
 func GetValueFromTags(tags []Tag, key string) *string {
