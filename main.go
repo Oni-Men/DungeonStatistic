@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"jp/thelow/static/dungeon"
 	"jp/thelow/static/model"
 	"jp/thelow/static/reinc"
 	"jp/thelow/static/template"
@@ -36,17 +37,17 @@ func main() {
 func fetchAll() {
 	reincResult := reinc.CountInMonth(config.Host, *year, *month)
 	writeJSON("reincs.json", reincResult)
-	//dungeonResult := dungeon.FetchCompletions(config.Host, *year, *month)
-	//writeJSON("completions.json", dungeonResult)
+	dungeonResult := dungeon.FetchCompletions(config.Host, *year, *month)
+	writeJSON("completions.json", dungeonResult)
 
-	//t := string(template.ReadTemplate(template.DUNGEON))
-	//t = dungeon.CreateImage(dungeonResult, t)
+	t := string(template.ReadTemplate(template.DUNGEON))
+	t = dungeon.CreateImage(dungeonResult, t)
 
-	// if err := ioutil.WriteFile(output+string(template.DUNGEON), []byte(t), fs.ModePerm); err != nil {
-	// 	log.Fatalf(err.Error())
-	// }
+	if err := ioutil.WriteFile(output+string(template.DUNGEON), []byte(t), fs.ModePerm); err != nil {
+		log.Fatalf(err.Error())
+	}
 
-	t := string(template.ReadTemplate(template.REINCARNATION))
+	t = string(template.ReadTemplate(template.REINCARNATION))
 	t = reinc.CreateImage(reincResult, t)
 
 	if err := ioutil.WriteFile(output+string(template.REINCARNATION), []byte(t), fs.ModePerm); err != nil {
