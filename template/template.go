@@ -1,23 +1,44 @@
 package template
 
 import (
-	"fmt"
+	"io/ioutil"
+	"log"
 	"strconv"
 )
 
-var monthLiterals = []string{
-	"January",
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December",
+type Template string
+
+var (
+	monthLiterals = []string{
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	}
+	DUNGEON       Template = "dungeon.svg"
+	REINCARNATION Template = "reincarnation.svg"
+)
+
+func ReadTemplate(t Template) string {
+	read, err := ioutil.ReadFile(GetTemplateLocation(t))
+
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+
+	return string(read)
+}
+
+func GetTemplateLocation(t Template) string {
+	return "./template/" + string(t)
 }
 
 func GetYearLiteral(year int) string {
@@ -26,8 +47,4 @@ func GetYearLiteral(year int) string {
 
 func GetMonthLiteral(month int) string {
 	return monthLiterals[month-1]
-}
-
-func getSheetName(year, month int) string {
-	return fmt.Sprintf("'%d/%d月'", year, month)
 }

@@ -12,7 +12,7 @@ type Tag struct {
 }
 
 type Log struct {
-	Timestamp uint64
+	Timestamp int64
 	Fields    []Tag
 }
 

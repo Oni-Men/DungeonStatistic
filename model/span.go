@@ -19,3 +19,7 @@ func (s *Span) FindLog(key string) *Log {
 	}
 	return nil
 }
+
+func (s *Span) GetTagValue(key string) *string {
+	return GetValueFromTags(s.Tags, key)
+}

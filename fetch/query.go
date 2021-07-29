@@ -46,7 +46,9 @@ func (q *Queries) Execute(host string) *model.Traces {
 func (q *Queries) Serialize() string {
 	res := make([]string, 0, 10)
 	res = append(res, fmt.Sprintf("service=%s", q.Service))
-	res = append(res, fmt.Sprintf("operation=%s", q.Operation))
+	if q.Operation != "" {
+		res = append(res, fmt.Sprintf("operation=%s", q.Operation))
+	}
 	res = append(res, fmt.Sprintf("limit=%d", q.Limit))
 	res = append(res, fmt.Sprintf("offset=%d", q.Offset))
 	res = append(res, fmt.Sprintf("start=%d", q.Start.UnixNano()/1000))
@@ -66,16 +68,16 @@ func (q *Queries) Serialize() string {
 	if q.LookBack != "" {
 		res = append(res, fmt.Sprintf("lookback=%s", q.LookBack))
 	} else {
-		res = append(res, "lookback")
+		res = append(res, "lookback=custom")
 	}
 
 	if q.Tags != nil {
 		tags := make([]string, 0, len(*q.Tags))
 		for k, v := range *q.Tags {
-			tags = append(tags, fmt.Sprintf("%s=%s", k, v))
+			tags = append(tags, fmt.Sprintf("\"%s\":\"%s\"", k, v))
 		}
-		escaped := url.QueryEscape(strings.Join(tags, ","))
-		res = append(res, escaped)
+		escaped := url.QueryEscape("{" + strings.Join(tags, ",") + "}")
+		res = append(res, "tags="+escaped)
 	}
 
 	return strings.Join(res, "&")

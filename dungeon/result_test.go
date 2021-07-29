@@ -8,7 +8,7 @@ import (
 
 func TestResultIncrement(t *testing.T) {
 
-	result := dungeon.NewResult()
+	result := dungeon.NewResult(2021, 6)
 
 	result.Increment("A")
 	result.Increment("A")

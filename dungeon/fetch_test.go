@@ -21,7 +21,7 @@ func TestFetchCompletions(t *testing.T) {
 		log.Fatal(err)
 	}
 
-	result := dungeon.NewResult()
+	result := dungeon.NewResult(2021, 7)
 
 	for _, t := range traces.Data {
 		dungeon.CountCompletesFromTrace(&t, result)

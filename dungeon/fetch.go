@@ -1,9 +1,15 @@
 package dungeon
 
 import (
+	"fmt"
 	"jp/thelow/static/fetch"
 	"jp/thelow/static/model"
+	"jp/thelow/static/progress"
 	"time"
+)
+
+const (
+	format = "01-02 15:04"
 )
 
 func FetchCompletions(host string, year, month int) *DungeonResult {
@@ -11,7 +17,12 @@ func FetchCompletions(host string, year, month int) *DungeonResult {
 	end := fetch.EndOfMonth(year, month)
 	tags := map[string]string{"description": "ExpBlock取得"}
 
-	result := NewResult()
+	monthDays := float64(end.Day())
+
+	result := NewResult(year, month)
+
+	fmt.Println("Count ダンジョン攻略")
+	bar := progress.NewProgressBar("dungeon")
 
 	for {
 		t := fetch.FetchTraces(host, &fetch.Queries{
@@ -41,9 +52,14 @@ func FetchCompletions(host string, year, month int) *DungeonResult {
 			break
 		}
 
-		println(end.Format(time.RFC1123Z))
-		time.Sleep(250 * time.Millisecond)
+		p := 1.0 - (float64(end.Day()) / monthDays)
+		bar.SetTitle(end.Format(format))
+		bar.SetProgress(p)
+
+		time.Sleep(1 * time.Second)
 	}
+
+	bar.CompleteProgress()
 
 	return result
 }

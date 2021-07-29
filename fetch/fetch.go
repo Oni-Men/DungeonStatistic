@@ -39,6 +39,5 @@ func StartOfMonth(year, month int) time.Time {
 
 func EndOfMonth(year, month int) time.Time {
 	next := time.Date(year, time.Month(month+1), 1, 0, 0, 0, 0, time.Local)
-	next.Add(-1 * time.Second)
-	return next
+	return next.Add(-1 * time.Second)
 }

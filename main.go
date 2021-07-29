@@ -9,8 +9,8 @@ import (
 	"os"
 	"time"
 
-	"jp/thelow/static/dungeon"
 	"jp/thelow/static/model"
+	"jp/thelow/static/reinc"
 	"jp/thelow/static/template"
 )
 
@@ -31,34 +31,37 @@ func main() {
 	prepareOutputDir(*year, *month)
 
 	fetchAll()
-	//createImages()
 }
 
-// func createImages() {
-
-// 	gen := func(fileName string, executor func(model.Config, int, int, string) string) {
-// 		data, err := ioutil.ReadFile("./template/" + fileName)
-// 		if err != nil {
-// 			log.Fatalf(err.Error())
-// 		}
-// 		text := executor(*config, year, month, string(data))
-// 		if err = ioutil.WriteFile(output+fileName, []byte(text), fs.ModePerm); err != nil {
-// 			log.Fatalf(err.Error())
-// 		}
-// 	}
-
-// 	gen("dungeon.svg", template.GenImgCompletedDungeons)
-// 	gen("reincarnation.svg", template.GenImgReincarnations)
-
-// }
-
 func fetchAll() {
-	result := dungeon.FetchCompletions(config.Host, *year, *month)
-	data, err := result.ToJSON()
+	reincResult := reinc.CountInMonth(config.Host, *year, *month)
+	writeJSON("reincs.json", reincResult)
+	//dungeonResult := dungeon.FetchCompletions(config.Host, *year, *month)
+	//writeJSON("completions.json", dungeonResult)
+
+	//t := string(template.ReadTemplate(template.DUNGEON))
+	//t = dungeon.CreateImage(dungeonResult, t)
+
+	// if err := ioutil.WriteFile(output+string(template.DUNGEON), []byte(t), fs.ModePerm); err != nil {
+	// 	log.Fatalf(err.Error())
+	// }
+
+	t := string(template.ReadTemplate(template.REINCARNATION))
+	t = reinc.CreateImage(reincResult, t)
+
+	if err := ioutil.WriteFile(output+string(template.REINCARNATION), []byte(t), fs.ModePerm); err != nil {
+		log.Fatalf(err.Error())
+	}
+}
+
+func writeJSON(filenam string, data interface{ ToJSON() ([]byte, error) }) {
+	json, err := data.ToJSON()
+
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
-	ioutil.WriteFile(output+"completes.json", data, fs.ModePerm)
+
+	ioutil.WriteFile(output+filenam, json, fs.ModePerm)
 }
 
 func prepareOutputDir(year, month int) {
