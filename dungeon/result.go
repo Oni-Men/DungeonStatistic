@@ -12,12 +12,12 @@ import (
 
 type DungeonResult struct {
 	model.Result
-	completes map[string]int
+	Completes map[string]int
 }
 
 func NewResult(year, month int) *DungeonResult {
 	r := &DungeonResult{
-		completes: make(map[string]int),
+		Completes: make(map[string]int),
 	}
 
 	r.SetYear(year)
@@ -43,12 +43,12 @@ func FromFile(year, month int) *DungeonResult {
 }
 
 func (r *DungeonResult) Increment(name string) {
-	r.completes[name]++
+	r.Completes[name]++
 	r.IncrementTotal()
 }
 
 func (r *DungeonResult) GetCount(name string) int {
-	count, ok := r.completes[name]
+	count, ok := r.Completes[name]
 
 	if ok {
 		return count
@@ -63,23 +63,23 @@ func (r *DungeonResult) ToJSON() ([]byte, error) {
 		Completes map[string]int
 	}{
 		Total:     r.GetTotal(),
-		Completes: r.completes,
+		Completes: r.Completes,
 	})
 }
 
 func (r *DungeonResult) CreateRanking() []string {
-	ranking := make([]string, 0, len(r.completes))
-	for k := range r.completes {
+	ranking := make([]string, 0, len(r.Completes))
+	for k := range r.Completes {
 		ranking = append(ranking, k)
 	}
 
 	sort.Slice(ranking, func(i, j int) bool {
-		a, ok := r.completes[ranking[i]]
+		a, ok := r.Completes[ranking[i]]
 		if !ok {
 			a = -1
 		}
 
-		b, ok := r.completes[ranking[j]]
+		b, ok := r.Completes[ranking[j]]
 		if !ok {
 			b = -1
 		}

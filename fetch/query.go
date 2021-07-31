@@ -38,7 +38,7 @@ func NewQueryBuilder(host string) *QueryBuilder {
 	q := &QueryBuilder{
 		Host:      host,
 		Service:   "server1",
-		Operation: "all",
+		Operation: "",
 		Limit:     100,
 		Offset:    0,
 		Start:     StartOfMonth(year, month),

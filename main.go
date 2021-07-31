@@ -32,7 +32,7 @@ func main() {
 	model.LoadConfig(config)
 	prepareOutputDir(*year, *month)
 
-	saveDungeonCompletions()
+	// saveDungeonCompletions()
 	saveReincarnations()
 }
 

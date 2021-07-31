@@ -54,11 +54,11 @@ func CountInMonthByType(q fetch.QueryBuilder, typ ReincType, r *ReincResult) {
 		}
 		q.End = end
 
-		if len(t.Data) < 1000 {
+		if len(t.Data) < q.Limit {
 			break
 		}
 
-		time.Sleep(1 * time.Second)
+		time.Sleep(500 * time.Millisecond)
 	}
 
 	bar.CompleteProgress()

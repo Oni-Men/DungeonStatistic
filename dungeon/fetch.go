@@ -43,11 +43,12 @@ func CountCompletions(q *fetch.QueryBuilder, year, month int) *DungeonResult {
 			CountCompletesFromTrace(&t, result)
 		}
 
-		if len(t.Data) < 1000 {
+		if len(t.Data) < q.Limit {
 			break
 		}
 
-		time.Sleep(2 * time.Second)
+		q.End = end
+		time.Sleep(1 * time.Second)
 	}
 
 	bar.CompleteProgress()
