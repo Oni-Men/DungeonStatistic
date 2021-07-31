@@ -12,28 +12,23 @@ const (
 	format = "01-02 15:04"
 )
 
-func FetchCompletions(host string, year, month int) *DungeonResult {
-	start := fetch.StartOfMonth(year, month)
-	end := fetch.EndOfMonth(year, month)
-	tags := map[string]string{"description": "ExpBlock取得"}
+func CountCompletions(q *fetch.QueryBuilder, year, month int) *DungeonResult {
+	q.SetOperation("dungeon")
+	q.SetTags(&map[string]string{"description": "ExpBlock取得"})
 
+	end := q.End
 	monthDays := float64(end.Day())
-
 	result := NewResult(year, month)
 
 	fmt.Println("Count ダンジョン攻略")
 	bar := progress.NewProgressBar("dungeon")
 
 	for {
-		t := fetch.FetchTraces(host, &fetch.Queries{
-			Service:   "server1",
-			Operation: "dungeon",
-			Limit:     100,
-			Offset:    0,
-			Start:     start,
-			End:       end,
-			Tags:      &tags,
-		})
+		p := 1.0 - (float64(end.Day()) / monthDays)
+		bar.SetTitle(end.Format(format))
+		bar.SetProgress(p)
+
+		t := fetch.FetchTraces(q)
 
 		for _, trace := range t.Data {
 			for _, span := range trace.Spans {
@@ -48,19 +43,14 @@ func FetchCompletions(host string, year, month int) *DungeonResult {
 			CountCompletesFromTrace(&t, result)
 		}
 
-		if len(t.Data) < 100 {
+		if len(t.Data) < 1000 {
 			break
 		}
 
-		p := 1.0 - (float64(end.Day()) / monthDays)
-		bar.SetTitle(end.Format(format))
-		bar.SetProgress(p)
-
-		time.Sleep(1 * time.Second)
+		time.Sleep(2 * time.Second)
 	}
 
 	bar.CompleteProgress()
-
 	return result
 }
 

@@ -17,7 +17,7 @@ func TestDungeonQuery(t *testing.T) {
 		"description": "ExpBlock取得",
 	}
 
-	q := fetch.Queries{
+	q := fetch.QueryBuilder{
 		Service:   "server1",
 		Operation: "dungeon",
 		Limit:     20,
@@ -29,15 +29,15 @@ func TestDungeonQuery(t *testing.T) {
 
 	expect := fmt.Sprintf("service=server1&operation=dungeon&limit=20&offset=0&start=%d&end=%d&minDuration&maxDuration&lookback&tags=%%7B\"description\"%%3A\"ExpBlock取得\"%%7D", start.UnixNano()/1000000, end.UnixNano()/1000000)
 
-	if q.Serialize() != expect {
-		log.Fatalf("expect: %s\nactual: %s", expect, q.Serialize())
+	if q.Build() != expect {
+		log.Fatalf("expect: %s\nactual: %s", expect, q.Build())
 	}
 }
 
 func TestReincQuery(t *testing.T) {
 	expect := "service=server1&operation=all&limit=20&offset=0&start=1625065200000000&end=1627743540000000&minDuration&maxDuration&lookback=custom&tags=%7B%22description%22%3A%22%E8%BB%A2%E7%94%9F%3AMAGIC%22%7D"
 
-	q := fetch.Queries{
+	q := fetch.QueryBuilder{
 		Service:   "server1",
 		Operation: "all",
 		Limit:     20,
@@ -49,7 +49,7 @@ func TestReincQuery(t *testing.T) {
 		},
 	}
 
-	if q.Serialize() != expect {
-		t.Fatalf("want %s but %s", expect, q.Serialize())
+	if q.Build() != expect {
+		t.Fatalf("want %s but %s", expect, q.Build())
 	}
 }

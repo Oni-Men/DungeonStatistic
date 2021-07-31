@@ -14,31 +14,24 @@ const (
 	SWORD  ReincType = "転生:SWORD"
 	MAGIC  ReincType = "転生:MAGIC"
 	BOW    ReincType = "転生:BOW"
+	ALL    ReincType = "全転生"
 	format           = "01-02 15:04"
 )
 
-func CountInMonth(host string, year, month int) *ReincResult {
+func CountInMonth(q *fetch.QueryBuilder, year, month int) *ReincResult {
 	r := NewResult(year, month)
 
-	CountInMonthByType(host, SWORD, year, month, r)
-	CountInMonthByType(host, MAGIC, year, month, r)
-	CountInMonthByType(host, BOW, year, month, r)
+	CountInMonthByType(*q, SWORD, r)
+	CountInMonthByType(*q, MAGIC, r)
+	CountInMonthByType(*q, BOW, r)
+	CountInMonthByType(*q, ALL, r)
 
 	return r
 }
 
-func CountInMonthByType(host string, typ ReincType, year, month int, r *ReincResult) {
-	start := fetch.StartOfMonth(year, month)
-	end := fetch.EndOfMonth(year, month)
-
-	q := &fetch.Queries{
-		Service: "server1",
-		Limit:   100,
-		Offset:  0,
-		Start:   start,
-		End:     end,
-		Tags:    &map[string]string{"description": string(typ)},
-	}
+func CountInMonthByType(q fetch.QueryBuilder, typ ReincType, r *ReincResult) {
+	end := q.End
+	q.SetTags(&map[string]string{"description": string(typ)})
 
 	monthDays := float64(end.Day())
 
@@ -46,7 +39,11 @@ func CountInMonthByType(host string, typ ReincType, year, month int, r *ReincRes
 	bar := progress.NewProgressBar(string(typ))
 
 	for {
-		t := fetch.FetchTraces(host, q)
+		p := 1.0 - (float64(end.Day()) / monthDays)
+		bar.SetTitle(end.Format(format))
+		bar.SetProgress(p)
+
+		t := fetch.FetchTraces(&q)
 
 		for _, trace := range t.Data {
 			when := CountFromTrace(&trace, typ, r)
@@ -55,16 +52,11 @@ func CountInMonthByType(host string, typ ReincType, year, month int, r *ReincRes
 				end = when
 			}
 		}
+		q.End = end
 
-		if len(t.Data) < 100 {
+		if len(t.Data) < 1000 {
 			break
 		}
-
-		p := 1.0 - (float64(end.Day()) / monthDays)
-		bar.SetTitle(end.Format(format))
-		bar.SetProgress(p)
-
-		q.End = end
 
 		time.Sleep(1 * time.Second)
 	}
@@ -98,13 +90,14 @@ func CountFromSpan(s *model.Span, typ ReincType, r *ReincResult) time.Time {
 	}
 
 	for _, log := range s.Logs {
-		if !log.ContainsKey("description") {
+		if !log.ContainsKey("description") || !log.ContainsKey("time") {
 			continue
 		}
 
 		description := log.GetValue("description")
+		occurAtStr := log.GetValue("time")
 
-		if description == nil {
+		if description == nil || occurAtStr == nil {
 			continue
 		}
 
@@ -112,7 +105,15 @@ func CountFromSpan(s *model.Span, typ ReincType, r *ReincResult) time.Time {
 			continue
 		}
 
-		r.Increment(*uuid, *mcid)
+		occurAt, err := time.Parse("2006/01/02 15:04:05", *occurAtStr)
+		if err != nil {
+			break
+		}
+
+		if occurAt.Year() == r.GetYear() && occurAt.Month() == r.GetMonth() {
+			r.Increment(*uuid, *mcid, s.SpanID)
+		}
+
 		break
 	}
 

@@ -1,10 +1,7 @@
 package fetch
 
 import (
-	"encoding/json"
 	"fmt"
-	"jp/thelow/static/model"
-	"log"
 	"net/url"
 	"strings"
 	"time"
@@ -20,7 +17,8 @@ const TWELVE_HOUR LookBackType = "12h"
 const ONE_DAY LookBackType = "1d"
 const TWO_DAY LookBackType = "2d"
 
-type Queries struct {
+type QueryBuilder struct {
+	Host        string             `label:"host"`
 	Service     string             `label:"service"`
 	Operation   string             `label:"operation"`
 	Limit       int                `label:"limit"`
@@ -33,17 +31,24 @@ type Queries struct {
 	LookBack    LookBackType       `label:"lookback"`
 }
 
-func (q *Queries) Execute(host string) *model.Traces {
-	req := endpoint(host, "traces") + "?" + q.Serialize()
-	res := new(model.Traces)
-	body := get(req)
-	if err := json.Unmarshal(body, res); err != nil {
-		log.Fatalf(err.Error())
+func NewQueryBuilder(host string) *QueryBuilder {
+	now := time.Now()
+	year := now.Year()
+	month := int(now.Month())
+	q := &QueryBuilder{
+		Host:      host,
+		Service:   "server1",
+		Operation: "all",
+		Limit:     100,
+		Offset:    0,
+		Start:     StartOfMonth(year, month),
+		End:       EndOfMonth(year, month),
+		Tags:      &map[string]string{},
 	}
-	return res
+	return q
 }
 
-func (q *Queries) Serialize() string {
+func (q *QueryBuilder) Build() string {
 	res := make([]string, 0, 10)
 	res = append(res, fmt.Sprintf("service=%s", q.Service))
 	if q.Operation != "" {
@@ -80,5 +85,37 @@ func (q *Queries) Serialize() string {
 		res = append(res, "tags="+escaped)
 	}
 
-	return strings.Join(res, "&")
+	return q.Host + "/api/traces?" + strings.Join(res, "&")
+}
+
+func (q *QueryBuilder) SetService(service string) {
+	q.Service = service
+}
+
+func (q *QueryBuilder) SetOperation(operation string) {
+	q.Operation = operation
+}
+
+func (q *QueryBuilder) SetLimit(limit int) {
+	q.Limit = limit
+}
+
+func (q *QueryBuilder) SetStart(start time.Time) {
+	q.Start = start
+}
+
+func (q *QueryBuilder) SetEnd(end time.Time) {
+	q.End = end
+}
+
+func (q *QueryBuilder) SetTags(tags *map[string]string) {
+	q.Tags = tags
+}
+
+func (q *QueryBuilder) AddTag(key, value string) {
+	(*q.Tags)[key] = value
+}
+
+func (q *QueryBuilder) SetHost(host string) {
+	q.Host = host
 }

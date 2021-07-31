@@ -10,6 +10,7 @@ import (
 type ReincResult struct {
 	model.Result
 	total int
+	IDs   map[string]bool
 	datas map[string]*ReincData
 }
 
@@ -21,6 +22,7 @@ type ReincData struct {
 func NewResult(year, month int) *ReincResult {
 	r := &ReincResult{
 		total: 0,
+		IDs:   make(map[string]bool),
 		datas: make(map[string]*ReincData),
 	}
 
@@ -34,7 +36,13 @@ func (r *ReincResult) GetTotal() int {
 	return r.total
 }
 
-func (r *ReincResult) Increment(uuid, mcid string) {
+func (r *ReincResult) Increment(uuid, mcid, id string) {
+	_, ok := r.IDs[id]
+	if ok {
+		return
+	}
+	r.IDs[id] = true
+
 	data, ok := r.datas[uuid]
 
 	if !ok {
@@ -46,7 +54,6 @@ func (r *ReincResult) Increment(uuid, mcid string) {
 	}
 
 	data.Count++
-
 	r.total++
 }
 

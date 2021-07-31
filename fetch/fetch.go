@@ -1,17 +1,22 @@
 package fetch
 
 import (
-	"fmt"
+	"encoding/json"
 	"io/ioutil"
 	"jp/thelow/static/model"
 	"log"
 	"net/http"
-	"strings"
 	"time"
 )
 
-func FetchTraces(host string, q *Queries) *model.Traces {
-	return q.Execute(host)
+func FetchTraces(q *QueryBuilder) *model.Traces {
+	req := q.Build()
+	res := new(model.Traces)
+	body := get(req)
+	if err := json.Unmarshal(body, res); err != nil {
+		log.Fatalf(err.Error())
+	}
+	return res
 }
 
 func get(url string) []byte {
@@ -27,10 +32,6 @@ func get(url string) []byte {
 		log.Fatalf("failed to read body: %s", err)
 	}
 	return body
-}
-
-func endpoint(host string, query ...string) string {
-	return fmt.Sprintf("%s/api/%s", host, strings.Join(query, "/"))
 }
 
 func StartOfMonth(year, month int) time.Time {

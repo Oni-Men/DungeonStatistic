@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"jp/thelow/static/dungeon"
+	"jp/thelow/static/fetch"
 	"jp/thelow/static/model"
 	"jp/thelow/static/reinc"
 	"jp/thelow/static/template"
@@ -31,13 +32,17 @@ func main() {
 	model.LoadConfig(config)
 	prepareOutputDir(*year, *month)
 
-	fetchAll()
+	saveDungeonCompletions()
+	saveReincarnations()
 }
 
-func fetchAll() {
-	reincResult := reinc.CountInMonth(config.Host, *year, *month)
-	writeJSON("reincs.json", reincResult)
-	dungeonResult := dungeon.FetchCompletions(config.Host, *year, *month)
+func saveDungeonCompletions() {
+	q := fetch.NewQueryBuilder(config.Host)
+	q.SetStart(fetch.StartOfMonth(*year, *month))
+	q.SetEnd(fetch.EndOfMonth(*year, *month))
+	q.SetLimit(500)
+
+	dungeonResult := dungeon.CountCompletions(q, *year, *month)
 	writeJSON("completions.json", dungeonResult)
 
 	t := string(template.ReadTemplate(template.DUNGEON))
@@ -46,8 +51,18 @@ func fetchAll() {
 	if err := ioutil.WriteFile(output+string(template.DUNGEON), []byte(t), fs.ModePerm); err != nil {
 		log.Fatalf(err.Error())
 	}
+}
 
-	t = string(template.ReadTemplate(template.REINCARNATION))
+func saveReincarnations() {
+	q := fetch.NewQueryBuilder(config.Host)
+	q.SetStart(fetch.StartOfMonth(*year, *month))
+	q.SetEnd(fetch.EndOfMonth(*year, *month))
+	q.SetLimit(500)
+
+	reincResult := reinc.CountInMonth(q, *year, *month)
+	writeJSON("reincs.json", reincResult)
+
+	t := string(template.ReadTemplate(template.REINCARNATION))
 	t = reinc.CreateImage(reincResult, t)
 
 	if err := ioutil.WriteFile(output+string(template.REINCARNATION), []byte(t), fs.ModePerm); err != nil {
