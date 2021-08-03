@@ -5,6 +5,7 @@ import (
 	"jp/thelow/static/fetch"
 	"jp/thelow/static/model"
 	"jp/thelow/static/progress"
+	"strconv"
 	"time"
 )
 
@@ -18,6 +19,14 @@ const (
 	format           = "01-02 15:04"
 )
 
+var (
+	count_msg = map[ReincType]string{
+		SWORD: "SWORDの転生回数",
+		MAGIC: "MAGICの転生回数",
+		BOW:   "BOWの転生回数",
+	}
+)
+
 func CountInMonth(q *fetch.QueryBuilder, year, month int) *ReincResult {
 	r := NewResult(year, month)
 
@@ -29,14 +38,15 @@ func CountInMonth(q *fetch.QueryBuilder, year, month int) *ReincResult {
 	return r
 }
 
-func CountInMonthByType(q fetch.QueryBuilder, typ ReincType, r *ReincResult) {
+func CountInMonthByType(q fetch.QueryBuilder, reincType ReincType, r *ReincResult) {
+
 	end := q.End
-	q.SetTags(&map[string]string{"description": string(typ)})
+	q.SetTags(&map[string]string{"description": string(reincType)})
 
 	monthDays := float64(end.Day())
 
-	fmt.Printf("Count %s\n", typ)
-	bar := progress.NewProgressBar(string(typ))
+	fmt.Printf("Count %s\n", reincType)
+	bar := progress.NewProgressBar(string(reincType))
 
 	for {
 		p := 1.0 - (float64(end.Day()) / monthDays)
@@ -46,7 +56,7 @@ func CountInMonthByType(q fetch.QueryBuilder, typ ReincType, r *ReincResult) {
 		t := fetch.FetchTraces(&q)
 
 		for _, trace := range t.Data {
-			when := CountFromTrace(&trace, typ, r)
+			when := CountFromTrace(&trace, reincType, r)
 
 			if when.Before(end) {
 				end = when
@@ -64,10 +74,10 @@ func CountInMonthByType(q fetch.QueryBuilder, typ ReincType, r *ReincResult) {
 	bar.CompleteProgress()
 }
 
-func CountFromTrace(t *model.Trace, typ ReincType, r *ReincResult) time.Time {
+func CountFromTrace(t *model.Trace, reincType ReincType, r *ReincResult) time.Time {
 	var oldest *time.Time = nil
 	for _, span := range t.Spans {
-		when := CountFromSpan(&span, typ, r)
+		when := CountFromSpan(&span, reincType, r)
 
 		if oldest == nil {
 			oldest = &when
@@ -79,7 +89,7 @@ func CountFromTrace(t *model.Trace, typ ReincType, r *ReincResult) time.Time {
 	return *oldest
 }
 
-func CountFromSpan(s *model.Span, typ ReincType, r *ReincResult) time.Time {
+func CountFromSpan(s *model.Span, reincType ReincType, r *ReincResult) time.Time {
 
 	uuid := s.GetTagValue("uuid")
 	mcid := s.GetTagValue("mcid")
@@ -96,12 +106,13 @@ func CountFromSpan(s *model.Span, typ ReincType, r *ReincResult) time.Time {
 
 		description := log.GetValue("description")
 		occurAtStr := log.GetValue("time")
+		countStr := log.GetValue(count_msg[reincType])
 
-		if description == nil || occurAtStr == nil {
+		if description == nil || occurAtStr == nil || countStr == nil {
 			continue
 		}
 
-		if *description != string(typ) {
+		if *description != string(reincType) {
 			continue
 		}
 
@@ -110,8 +121,13 @@ func CountFromSpan(s *model.Span, typ ReincType, r *ReincResult) time.Time {
 			break
 		}
 
+		count, err := strconv.Atoi(*countStr)
+		if err != nil {
+			break
+		}
+
 		if occurAt.Year() == r.GetYear() && occurAt.Month() == r.GetMonth() {
-			r.Increment(*uuid, *mcid, s.SpanID)
+			r.Increment(*uuid, *mcid, s.SpanID, reincType, occurAt, count)
 		}
 
 		break

@@ -32,7 +32,7 @@ func main() {
 	model.LoadConfig(config)
 	prepareOutputDir(*year, *month)
 
-	// saveDungeonCompletions()
+	saveDungeonCompletions()
 	saveReincarnations()
 }
 
@@ -57,7 +57,7 @@ func saveReincarnations() {
 	q := fetch.NewQueryBuilder(config.Host)
 	q.SetStart(fetch.StartOfMonth(*year, *month))
 	q.SetEnd(fetch.EndOfMonth(*year, *month))
-	q.SetLimit(500)
+	q.SetLimit(100)
 
 	reincResult := reinc.CountInMonth(q, *year, *month)
 	writeJSON("reincs.json", reincResult)
@@ -84,7 +84,7 @@ func prepareOutputDir(year, month int) {
 	year_str := template.GetYearLiteral(year)
 	month_str := template.GetMonthLiteral(month)
 
-	output = fmt.Sprintf("./data/%s/%s/", year_str, month_str)
+	output = fmt.Sprintf("./data/%s/%d_%s/", year_str, month, month_str)
 
 	if err := os.MkdirAll(output, os.ModePerm); err != nil {
 		log.Fatalf(err.Error())

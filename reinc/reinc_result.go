@@ -14,11 +14,6 @@ type ReincResult struct {
 	datas map[string]*ReincData
 }
 
-type ReincData struct {
-	MCID  string
-	Count int
-}
-
 func NewResult(year, month int) *ReincResult {
 	r := &ReincResult{
 		total: 0,
@@ -36,24 +31,24 @@ func (r *ReincResult) GetTotal() int {
 	return r.total
 }
 
-func (r *ReincResult) Increment(uuid, mcid, id string) {
-	_, ok := r.IDs[id]
-	if ok {
+func (r *ReincResult) Increment(uuid, mcid, spanID string, reincType ReincType, when time.Time, count int) {
+	if r.checkForDuplicates(spanID) {
 		return
 	}
-	r.IDs[id] = true
 
 	data, ok := r.datas[uuid]
-
 	if !ok {
-		data = &ReincData{
-			MCID:  mcid,
-			Count: 0,
-		}
+		data = NewReincData(mcid)
 		r.datas[uuid] = data
 	}
 
-	data.Count++
+	counter, ok := data.Counters[reincType]
+	if !ok {
+		counter = NewReincCounter(r.GetYear(), r.GetMonthInt())
+		data.Counters[reincType] = counter
+	}
+
+	counter.Count(count, when)
 	r.total++
 }
 
@@ -61,7 +56,13 @@ func (r *ReincResult) GetCount(uuid string) int {
 	data, ok := r.datas[uuid]
 
 	if ok {
-		return data.Count
+		count := 0
+
+		for _, counter := range data.Counters {
+			count += counter.Total
+		}
+
+		return count
 	}
 
 	return -1
@@ -112,8 +113,19 @@ func (r *ReincResult) CreateRanking() []string {
 			return true
 		}
 
-		return a.Count > b.Count
+		return a.GetCount() > b.GetCount()
 	})
 
 	return ranking
+}
+
+// Returns true if duplicates has exist.
+func (r *ReincResult) checkForDuplicates(id string) bool {
+	_, ok := r.IDs[id]
+	if ok {
+		return true
+	}
+	r.IDs[id] = true
+
+	return false
 }
