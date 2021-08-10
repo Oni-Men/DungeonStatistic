@@ -12,6 +12,7 @@ import (
 	"jp/thelow/static/dungeon"
 	"jp/thelow/static/fetch"
 	"jp/thelow/static/model"
+	"jp/thelow/static/player"
 	"jp/thelow/static/reinc"
 	"jp/thelow/static/template"
 )
@@ -20,6 +21,8 @@ var (
 	config = new(model.Config)
 	year   *int
 	month  *int
+	mcid   *string
+	svg    *bool
 	output = "."
 )
 
@@ -27,13 +30,21 @@ func main() {
 	now := time.Now()
 	year = flag.Int("year", now.Year(), "集計対象の年(デフォルトは今年)")
 	month = flag.Int("month", int(now.Month()), "集計対象の月(デフォルトは今月)")
+	mcid = flag.String("mcid", "", "mcid")
+	svg = flag.Bool("image", false, "テンプレートからSVGを生成するか")
+
 	flag.Parse()
 
 	model.LoadConfig(config)
 	prepareOutputDir(*year, *month)
 
-	saveDungeonCompletions()
-	saveReincarnations()
+	if *mcid != "" {
+		fmt.Printf("Fetch %s's data...\n", *mcid)
+		player.FetchPlayersDungeonData(config.Host, *mcid, "クラバスタ")
+	} else {
+		saveDungeonCompletions()
+		saveReincarnations()
+	}
 }
 
 func saveDungeonCompletions() {
@@ -45,11 +56,14 @@ func saveDungeonCompletions() {
 	dungeonResult := dungeon.CountCompletions(q, *year, *month)
 	writeJSON("completions.json", dungeonResult)
 
-	t := string(template.ReadTemplate(template.DUNGEON))
-	t = dungeon.CreateImage(dungeonResult, t)
+	if *svg {
 
-	if err := ioutil.WriteFile(output+string(template.DUNGEON), []byte(t), fs.ModePerm); err != nil {
-		log.Fatalf(err.Error())
+		t := string(template.ReadTemplate(template.DUNGEON))
+		t = dungeon.CreateImage(dungeonResult, t)
+
+		if err := ioutil.WriteFile(output+string(template.DUNGEON), []byte(t), fs.ModePerm); err != nil {
+			log.Fatalf(err.Error())
+		}
 	}
 }
 
@@ -62,11 +76,16 @@ func saveReincarnations() {
 	reincResult := reinc.CountInMonth(q, *year, *month)
 	writeJSON("reincs.json", reincResult)
 
-	t := string(template.ReadTemplate(template.REINCARNATION))
-	t = reinc.CreateImage(reincResult, t)
+	if *svg {
 
-	if err := ioutil.WriteFile(output+string(template.REINCARNATION), []byte(t), fs.ModePerm); err != nil {
-		log.Fatalf(err.Error())
+		t := string(template.ReadTemplate(template.REINCARNATION))
+		t = reinc.CreateImage(reincResult, t)
+
+		svgFile := output + string(template.REINCARNATION)
+
+		if err := ioutil.WriteFile(svgFile, []byte(t), fs.ModePerm); err != nil {
+			log.Fatalf(err.Error())
+		}
 	}
 }
 
