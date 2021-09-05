@@ -35,8 +35,17 @@ func main() {
 
 	flag.Parse()
 
+	if *year < 0 {
+		log.Printf("specified year is less than 0: %d\n", *year)
+	}
+
+	if *month < 1 || 12 < *month {
+		log.Printf("specified month is out of range: %d\n", *month)
+		os.Exit(1)
+	}
+
 	model.LoadConfig(config)
-	prepareOutputDir(*year, *month)
+	createOutputDir(*year, *month)
 
 	if *mcid != "" {
 		fmt.Printf("Fetch %s's data...\n", *mcid)
@@ -99,13 +108,13 @@ func writeJSON(filenam string, data interface{ ToJSON() ([]byte, error) }) {
 	ioutil.WriteFile(output+filenam, json, fs.ModePerm)
 }
 
-func prepareOutputDir(year, month int) {
-	year_str := template.GetYearLiteral(year)
-	month_str := template.GetMonthLiteral(month)
-
-	output = fmt.Sprintf("./data/%s/%d_%s/", year_str, month, month_str)
-
-	if err := os.MkdirAll(output, os.ModePerm); err != nil {
-		log.Fatalf(err.Error())
+func createOutputDir(year, month int) error {
+	year_lit := template.GetYearLiteral(year)
+	month_lit, err := template.GetMonthLiteral(month)
+	if err != nil {
+		return err
 	}
+
+	dir := fmt.Sprintf("./data/%s/%d_%s/", year_lit, month, month_lit)
+	return os.MkdirAll(dir, os.ModePerm)
 }
