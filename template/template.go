@@ -1,9 +1,11 @@
 package template
 
 import (
+	"errors"
 	"io/ioutil"
 	"log"
 	"strconv"
+	"time"
 )
 
 type Template string
@@ -25,6 +27,8 @@ var (
 	}
 	DUNGEON       Template = "dungeon.svg"
 	REINCARNATION Template = "reincarnation.svg"
+
+	ErrMonthOutOfRange = errors.New("specified month is out of range 1-12")
 )
 
 func ReadTemplate(t Template) string {
@@ -45,6 +49,10 @@ func GetYearLiteral(year int) string {
 	return strconv.Itoa(year)
 }
 
-func GetMonthLiteral(month int) string {
-	return monthLiterals[month-1]
+func GetMonthLiteral(month int) (string, error) {
+	if month < 1 || 12 < month {
+		return "", ErrMonthOutOfRange
+	}
+
+	return time.Month(month).String(), nil
 }
