@@ -21,8 +21,6 @@ func Count(config *model.Config) (*DungeonList, error) {
 		return nil, err
 	}
 
-	println(string(data))
-
 	aggs := new(elastic.AggsDungeonClear)
 	if err = json.Unmarshal(data, aggs); err != nil {
 		return nil, err
