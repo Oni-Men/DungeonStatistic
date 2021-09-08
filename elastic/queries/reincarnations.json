@@ -1,0 +1,17 @@
+{
+	"size": 0,
+	"query": {
+		"bool": {
+			"filter": [
+				{ "range": { "@timestamp": { "gte": "$start", "lte": "$end" } } },
+				{ "query_string": { "analyze_wildcard": true, "query": "name:\"reinc\"" } }
+			]
+		}
+	},
+	"aggs": {
+		"player-uuid-group": {
+			"terms": { "field": "player-uuid.keyword", "size": 500, "order": { "_count": "desc" }, "min_doc_count": 0 },
+			"aggs": { "count-reincs": { "sum": { "field": "count" } } }
+		}
+	}
+}

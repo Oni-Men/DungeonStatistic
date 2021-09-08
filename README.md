@@ -1,6 +1,8 @@
 # TheLow のプレイデータ集計ツール
 
-[Jaeger](https://www.jaegertracing.io/)という分散トレーシングシステムに登録されたデータを集計するツールです。
+~~[Jaeger](https://www.jaegertracing.io/)という分散トレーシングシステムに登録されたデータを集計するツールです。~~
+
+Elasticsearch を利用するようにしました。(2021/9/8)
 
 集計期間の指定は月単位で行います。
 
@@ -20,20 +22,20 @@
 
 `default.json`のファイル名を`config.json`に変更し、
 
-`host`の値に適切なアドレスを設定してください。
+`elastic -> host`の値に適切なアドレスを設定してください。
 
-今月分のデータを集計するときは、以下のコマンドを実行します。
+`Year`と`Month`に指定した年月からデータを集計します。
 
 ```sh
 go run main.go
 ```
 
-すると、`data/2021/June/completes.json`に集計結果が出力されます。
+すると、`data/<year>/<name of month>/completes.json`に集計結果が出力されます。
 
-また、年月を指定することもできます。
+また、コマンドライン引数から年月を指定することもできます。
 
 ```sh
-go run main.go -mode=fetch -month=4 -year=2021
+go run main.go -month=4 -year=2021
 ```
 
 これは 2021 年 4 月を指定した場合です。

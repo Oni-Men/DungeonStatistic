@@ -1,3 +1,8 @@
 {
-	"host": "http://xxx.yyy.zzz:12345"
+	"year": 2021,
+	"month": 1,
+	"host": "http://xxx.yyy.zzz:12345",
+	"elastic": {
+		"host": "http://xxx.yyy.zzz:12345"
+	}
 }

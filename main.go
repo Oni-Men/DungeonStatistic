@@ -1,16 +1,15 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io/fs"
 	"io/ioutil"
 	"log"
 	"os"
-	"time"
 
 	"jp/thelow/static/dungeon"
-	"jp/thelow/static/fetch"
 	"jp/thelow/static/model"
 	"jp/thelow/static/player"
 	"jp/thelow/static/reinc"
@@ -19,91 +18,75 @@ import (
 
 var (
 	config = new(model.Config)
-	year   *int
-	month  *int
 	mcid   *string
-	svg    *bool
+	image  *bool
 	output = "."
 )
 
 func main() {
-	now := time.Now()
-	year = flag.Int("year", now.Year(), "集計対象の年(デフォルトは今年)")
-	month = flag.Int("month", int(now.Month()), "集計対象の月(デフォルトは今月)")
+	loadConfig()
+
+	year := flag.Int("year", config.Year, "集計対象の年(デフォルトは今年)")
+	month := flag.Int("month", config.Month, "集計対象の月(デフォルトは今月)")
 	mcid = flag.String("mcid", "", "mcid")
-	svg = flag.Bool("image", false, "テンプレートからSVGを生成するか")
+	image = flag.Bool("image", false, "テンプレートからSVGを生成するか")
 
 	flag.Parse()
 
-	if *year < 0 {
-		log.Printf("specified year is less than 0: %d\n", *year)
+	config.Year = *year
+	config.Month = *month
+
+	if config.Year < 0 {
+		log.Printf("specified year is less than 0: %d\n", config.Year)
 	}
 
-	if *month < 1 || 12 < *month {
-		log.Printf("specified month is out of range: %d\n", *month)
+	if config.Month < 1 || 12 < config.Month {
+		log.Printf("specified month is out of range: %d\n", config.Month)
 		os.Exit(1)
 	}
 
-	model.LoadConfig(config)
-	createOutputDir(*year, *month)
+	createOutputDir(config.Year, config.Month)
 
 	if *mcid != "" {
 		fmt.Printf("Fetch %s's data...\n", *mcid)
 		player.FetchPlayersDungeonData(config.Host, *mcid, "クラバスタ")
 	} else {
-		dungeonRes := countDungeonCompletes()
-		writeJSON("completions.json", dungeonRes)
-
-		reincRes := countReincarnations()
-		writeJSON("reincs.json", reincRes)
-
-		if *svg {
-			createDungeonImage(dungeonRes)
-			createReincarnationImage(reincRes)
+		clears, err := dungeon.Count(config)
+		if err == nil {
+			writeJSON("dungeon_clears.json", clears)
+		} else {
+			log.Fatalf(err.Error())
 		}
+
+		reincs, err := reinc.Count(config)
+
+		if err == nil {
+			writeJSON("reincs.json", reincs)
+		} else {
+			log.Fatalf(err.Error())
+		}
+
+		if *image {
+			dungeon.CreateRankingImage(clears, output)
+			reinc.CreateRankingImage(reincs, output)
+		}
+
 	}
 }
 
-func countDungeonCompletes() *dungeon.DungeonResult {
-	q := fetch.NewQueryBuilder(config.Host)
-	q.SetStart(fetch.StartOfMonth(*year, *month))
-	q.SetEnd(fetch.EndOfMonth(*year, *month))
-	q.SetLimit(500)
+func loadConfig() {
+	data, err := ioutil.ReadFile("./config/config.json")
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
 
-	return dungeon.CountCompletions(q, *year, *month)
-}
-
-func createDungeonImage(dungeonResult *dungeon.DungeonResult) {
-	t := string(template.ReadTemplate(template.DUNGEON))
-	t = dungeon.CreateImage(dungeonResult, t)
-
-	if err := ioutil.WriteFile(output+string(template.DUNGEON), []byte(t), fs.ModePerm); err != nil {
+	if err = json.Unmarshal(data, config); err != nil {
 		log.Fatalf(err.Error())
 	}
 }
 
-func countReincarnations() *reinc.ReincResult {
-	q := fetch.NewQueryBuilder(config.Host)
-	q.SetStart(fetch.StartOfMonth(*year, *month))
-	q.SetEnd(fetch.EndOfMonth(*year, *month))
-	q.SetLimit(100)
-
-	return reinc.CountInMonth(q, *year, *month)
-}
-
-func createReincarnationImage(reincResult *reinc.ReincResult) {
-	t := string(template.ReadTemplate(template.REINCARNATION))
-	t = reinc.CreateImage(reincResult, t)
-
-	svgFile := output + string(template.REINCARNATION)
-
-	if err := ioutil.WriteFile(svgFile, []byte(t), fs.ModePerm); err != nil {
-		log.Fatalf(err.Error())
-	}
-}
-
-func writeJSON(filenam string, data interface{ ToJSON() ([]byte, error) }) {
-	json, err := data.ToJSON()
+func writeJSON(filenam string, data interface{}) {
+	json, err := json.Marshal(data)
 
 	if err != nil {
 		log.Fatalf(err.Error())
@@ -119,6 +102,6 @@ func createOutputDir(year, month int) error {
 		return err
 	}
 
-	dir := fmt.Sprintf("./data/%s/%d_%s/", year_lit, month, month_lit)
-	return os.MkdirAll(dir, os.ModePerm)
+	output = fmt.Sprintf("./data/%s/%d_%s/", year_lit, month, month_lit)
+	return os.MkdirAll(output, os.ModePerm)
 }

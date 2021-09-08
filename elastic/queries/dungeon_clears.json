@@ -1,0 +1,42 @@
+{
+	"size": 0,
+	"query": {
+		"bool": {
+			"filter": [
+				{
+					"range": {
+						"@timestamp": {
+							"gte": "$start",
+							"lte": "$end"
+						}
+					}
+				},
+				{
+					"query_string": {
+						"analyze_wildcard": true,
+						"query": "name:\"DungeonClear\""
+					}
+				}
+			]
+		}
+	},
+	"aggs": {
+		"dungeon-group": {
+			"terms": {
+				"field": "dungeon-name.keyword",
+				"size": 500,
+				"order": {
+					"count-clears": "desc"
+				},
+				"min_doc_count": 1
+			},
+			"aggs": {
+				"count-clears": {
+					"sum": {
+						"field": "count"
+					}
+				}
+			}
+		}
+	}
+}

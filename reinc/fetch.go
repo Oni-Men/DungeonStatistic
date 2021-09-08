@@ -1,137 +1,62 @@
 package reinc
 
 import (
-	"fmt"
+	"encoding/json"
+	"jp/thelow/static/elastic"
 	"jp/thelow/static/fetch"
 	"jp/thelow/static/model"
-	"jp/thelow/static/progress"
-	"strconv"
+	"jp/thelow/static/mojang"
+	"sort"
 	"time"
 )
 
-type ReincType string
-
-const (
-	SWORD  ReincType = "転生:SWORD"
-	MAGIC  ReincType = "転生:MAGIC"
-	BOW    ReincType = "転生:BOW"
-	ALL    ReincType = "全転生"
-	format           = "01-02 15:04"
-)
-
-var (
-	count_msg = map[ReincType]string{
-		SWORD: "SWORDの転生回数",
-		MAGIC: "MAGICの転生回数",
-		BOW:   "BOWの転生回数",
-	}
-)
-
-func CountInMonth(q *fetch.QueryBuilder, year, month int) *ReincResult {
-	r := NewResult(year, month)
-
-	CountInMonthByType(*q, SWORD, r)
-	CountInMonthByType(*q, MAGIC, r)
-	CountInMonthByType(*q, BOW, r)
-	CountInMonthByType(*q, ALL, r)
-
-	return r
-}
-
-func CountInMonthByType(q fetch.QueryBuilder, reincType ReincType, r *ReincResult) {
-
-	end := q.End
-	q.SetTags(&map[string]string{"description": string(reincType)})
-
-	monthDays := float64(end.Day())
-
-	fmt.Printf("Count %s\n", reincType)
-	bar := progress.NewProgressBar(string(reincType))
-
-	for {
-		p := 1.0 - (float64(end.Day()) / monthDays)
-		bar.SetTitle(end.Format(format))
-		bar.SetProgress(p)
-
-		t := fetch.FetchTraces(&q)
-
-		for _, trace := range t.Data {
-			when := CountFromTrace(&trace, reincType, r)
-
-			if when.Before(end) {
-				end = when
-			}
-		}
-		q.End = end
-
-		if len(t.Data) < q.Limit {
-			break
-		}
-
-		time.Sleep(500 * time.Millisecond)
+func Count(config *model.Config) (*ReincList, error) {
+	q := &elastic.ElasticQuery{
+		Host:      config.Elastic.Host,
+		Start:     fetch.StartOfMonth(config.Year, config.Month),
+		End:       fetch.EndOfMonth(config.Year, config.Month),
+		QueryFile: "reincarnations.json",
 	}
 
-	bar.CompleteProgress()
-}
-
-func CountFromTrace(t *model.Trace, reincType ReincType, r *ReincResult) time.Time {
-	var oldest *time.Time = nil
-	for _, span := range t.Spans {
-		when := CountFromSpan(&span, reincType, r)
-
-		if oldest == nil {
-			oldest = &when
-		} else if when.Before(*oldest) {
-			oldest = &when
-		}
+	data, err := elastic.Fetch(q)
+	if err != nil {
+		return nil, err
 	}
 
-	return *oldest
-}
-
-func CountFromSpan(s *model.Span, reincType ReincType, r *ReincResult) time.Time {
-
-	uuid := s.GetTagValue("uuid")
-	mcid := s.GetTagValue("mcid")
-	when := time.Unix(s.StartTime/1000000, 0)
-
-	if uuid == nil || mcid == nil {
-		return when
+	aggs := new(elastic.AggsReincarnation)
+	if err = json.Unmarshal(data, aggs); err != nil {
+		return nil, err
 	}
 
-	for _, log := range s.Logs {
-		if !log.ContainsKey("description") || !log.ContainsKey("time") {
-			continue
-		}
+	buckets := aggs.Aggregations.PlayerUUIDGroup.Buckets
+	sort.Slice(buckets, func(i, j int) bool {
+		return buckets[i].CountReincs.Value > buckets[j].CountReincs.Value
+	})
 
-		description := log.GetValue("description")
-		occurAtStr := log.GetValue("time")
-		countStr := log.GetValue(count_msg[reincType])
+	n := 10
+	if len(buckets) < 10 {
+		n = len(buckets)
+	}
 
-		if description == nil || occurAtStr == nil || countStr == nil {
-			continue
-		}
+	result := &ReincList{
+		Data:    make(map[string]int),
+		Ranking: make([]string, 10),
+		Year:    config.Year,
+		Month:   time.Month(config.Month),
+	}
 
-		if *description != string(reincType) {
-			continue
-		}
+	for i := 0; i < n; i++ {
+		bucket := buckets[i]
+		uuid := bucket.Key
+		name, err := mojang.FetchPlayerName(uuid)
 
-		occurAt, err := time.Parse("2006/01/02 15:04:05", *occurAtStr)
 		if err != nil {
-			break
+			continue
 		}
 
-		count, err := strconv.Atoi(*countStr)
-		if err != nil {
-			break
-		}
-
-		if occurAt.Year() == r.GetYear() && occurAt.Month() == r.GetMonth() {
-			r.Increment(*uuid, *mcid, s.SpanID, reincType, occurAt, count)
-		}
-
-		break
+		result.Data[name] = int(bucket.CountReincs.Value)
+		result.Ranking[i] = name
 	}
 
-	return when
+	return result, nil
 }

@@ -1,83 +1,53 @@
 package dungeon
 
 import (
-	"fmt"
+	"encoding/json"
+	"jp/thelow/static/elastic"
 	"jp/thelow/static/fetch"
 	"jp/thelow/static/model"
-	"jp/thelow/static/progress"
-	"time"
+	"sort"
 )
 
-const (
-	format = "01-02 15:04"
-)
-
-func CountCompletions(q *fetch.QueryBuilder, year, month int) *DungeonResult {
-	q.SetOperation("dungeon")
-	q.SetTags(&map[string]string{"description": "ExpBlock取得"})
-
-	end := q.End
-	monthDays := float64(end.Day())
-	result := NewResult(year, month)
-
-	fmt.Println("Count ダンジョン攻略")
-	bar := progress.NewProgressBar("dungeon")
-
-	for {
-		p := 1.0 - (float64(end.Day()) / monthDays)
-		bar.SetTitle(end.Format(format))
-		bar.SetProgress(p)
-
-		t := fetch.FetchTraces(q)
-
-		for _, trace := range t.Data {
-			for _, span := range trace.Spans {
-				s := time.Unix(span.StartTime/1000000, 0)
-				if s.Before(end) {
-					end = s
-				}
-			}
-		}
-
-		for _, t := range t.Data {
-			CountCompletesFromTrace(&t, result)
-		}
-
-		if len(t.Data) < q.Limit {
-			break
-		}
-
-		q.End = end
-		time.Sleep(1 * time.Second)
+func Count(config *model.Config) (*DungeonList, error) {
+	q := elastic.ElasticQuery{
+		Host:      config.Elastic.Host,
+		Start:     fetch.StartOfMonth(config.Year, config.Month),
+		End:       fetch.EndOfMonth(config.Year, config.Month),
+		QueryFile: "dungeon_clears.json",
 	}
 
-	bar.CompleteProgress()
-	return result
-}
-
-func CountCompletesFromTrace(t *model.Trace, result *DungeonResult) {
-	for _, span := range t.Spans {
-		CountCompletesFromSpan(&span, result)
+	data, err := elastic.Fetch(&q)
+	if err != nil {
+		return nil, err
 	}
-}
 
-func CountCompletesFromSpan(s *model.Span, result *DungeonResult) {
+	println(string(data))
 
-	for _, log := range s.Logs {
-
-		if !log.ContainsKey("description") {
-			continue
-		}
-
-		description := log.GetValue("description")
-		dungeonName := log.GetValue("ダンジョン名")
-
-		if description == nil || dungeonName == nil {
-			continue
-		}
-
-		if *description == "ExpBlock取得" {
-			result.Increment(*dungeonName)
-		}
+	aggs := new(elastic.AggsDungeonClear)
+	if err = json.Unmarshal(data, aggs); err != nil {
+		return nil, err
 	}
+
+	buckets := aggs.Aggregations.DungeonGroup.Buckets
+	sort.Slice(buckets, func(i, j int) bool {
+		return buckets[i].CountClears.Value > buckets[j].CountClears.Value
+	})
+
+	list := &DungeonList{
+		Year:    config.Year,
+		Month:   config.Month,
+		Ranking: make([]DungeonClear, 0, len(buckets)),
+	}
+
+	for _, bucket := range buckets {
+		count := int(bucket.CountClears.Value)
+		d := DungeonClear{
+			Name:  bucket.Key,
+			Count: count,
+		}
+		list.Ranking = append(list.Ranking, d)
+		list.Total += count
+	}
+
+	return list, nil
 }
