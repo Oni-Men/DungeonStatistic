@@ -6,7 +6,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="template.svg"
+   sodipodi:docname="dungeon.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -17,6 +17,18 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
+    <rect
+       x="1122.5197"
+       y="145.6049"
+       width="255.27644"
+       height="601.57816"
+       id="rect38247" />
+    <rect
+       x="1122.6904"
+       y="826.37169"
+       width="302.70493"
+       height="670.5489"
+       id="rect2661" />
     <rect
        x="322.59112"
        y="37.755109"
@@ -97,9 +109,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.2144906"
-     inkscape:cx="848.27635"
-     inkscape:cy="137.95498"
+     inkscape:zoom="0.78294066"
+     inkscape:cx="409.99276"
+     inkscape:cy="381.25495"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -189,7 +201,7 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:10.6821px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#month}月に攻略されたダンジョン</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8.90171px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="25.18935"
        y="35.792652"
        id="text839"><tspan
@@ -197,7 +209,7 @@
          id="tspan837"
          x="25.18935"
          y="35.792652"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8.90171px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans Light';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">Completed dungeons in {#month_literal}</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Light';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Completed dungeons in {#month_literal}</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.7px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -237,15 +249,15 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_0}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="51.995594"
+       y="51.719879"
        id="text1171"><tspan
          sodipodi:role="line"
          id="tspan1169"
          x="265.9483"
-         y="51.995594"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;">{#count_0}</tspan></text>
+         y="51.719879"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_0}</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -259,15 +271,15 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_2}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="78.12146"
+       y="77.845734"
        id="text1161"><tspan
          sodipodi:role="line"
          id="tspan1159"
          x="265.9483"
-         y="78.12146"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_2}</tspan></text>
+         y="77.845734"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_2}</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -281,18 +293,18 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_1}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="65.058533"
+       y="64.782806"
        id="text1183"><tspan
          id="tspan1181"
          x="265.9483"
-         y="65.058533"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"
+         y="64.782806"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583"
          sodipodi:role="line">{#count_1}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.109892"
        y="90.844727"
        id="text991"><tspan
@@ -300,10 +312,10 @@
          id="tspan989"
          x="26.109892"
          y="90.844727"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">4</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">4</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.167267"
        y="77.781792"
        id="text995"><tspan
@@ -311,10 +323,10 @@
          id="tspan993"
          x="26.167267"
          y="77.781792"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">3</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">3</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.128147"
        y="64.755379"
        id="text999"><tspan
@@ -322,10 +334,10 @@
          id="tspan997"
          x="26.128147"
          y="64.755379"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">2</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">2</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.036869"
        y="51.655926"
        id="text1195"><tspan
@@ -333,7 +345,7 @@
          id="tspan1193"
          x="26.036869"
          y="51.655926"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">1</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -347,18 +359,18 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_3}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="91.184395"
+       y="90.908669"
        id="text1205"><tspan
          sodipodi:role="line"
          id="tspan1203"
          x="265.9483"
-         y="91.184395"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_3}</tspan></text>
+         y="90.908669"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_3}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.164658"
        y="103.87115"
        id="text1217"><tspan
@@ -366,7 +378,7 @@
          id="tspan1215"
          x="26.164658"
          y="103.87115"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">5</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">5</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -380,18 +392,18 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_4}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="104.24732"
+       y="103.97158"
        id="text1227"><tspan
          sodipodi:role="line"
          id="tspan1225"
          x="265.9483"
-         y="104.24732"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_4}</tspan></text>
+         y="103.97158"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_4}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.068165"
        y="116.9706"
        id="text1239"><tspan
@@ -399,7 +411,7 @@
          id="tspan1237"
          x="26.068165"
          y="116.9706"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">6</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">6</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -413,18 +425,18 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_5}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="117.31026"
+       y="117.03452"
        id="text1249"><tspan
          sodipodi:role="line"
          id="tspan1247"
          x="265.9483"
-         y="117.31026"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_5}</tspan></text>
+         y="117.03452"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_5}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.083813"
        y="130.03352"
        id="text1261"><tspan
@@ -432,7 +444,7 @@
          id="tspan1259"
          x="26.083813"
          y="130.03352"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">7</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">7</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -446,18 +458,18 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_6}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="130.37318"
+       y="130.09749"
        id="text1271"><tspan
          sodipodi:role="line"
          id="tspan1269"
          x="265.9483"
-         y="130.37318"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_6}</tspan></text>
+         y="130.09749"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_6}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.117716"
        y="156.15939"
        id="text1283"><tspan
@@ -465,7 +477,7 @@
          id="tspan1281"
          x="26.117716"
          y="156.15939"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">9</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">9</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -479,18 +491,18 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_8}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="156.49905"
+       y="156.22336"
        id="text1293"><tspan
          sodipodi:role="line"
          id="tspan1291"
          x="265.9483"
-         y="156.49905"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_8}</tspan></text>
+         y="156.22336"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_8}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="24.417351"
        y="169.22234"
        id="text1305"><tspan
@@ -498,7 +510,7 @@
          id="tspan1303"
          x="24.417351"
          y="169.22234"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">10</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">10</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -512,18 +524,18 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_9}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="169.56198"
+       y="169.28629"
        id="text1315"><tspan
          sodipodi:role="line"
          id="tspan1313"
          x="265.9483"
-         y="169.56198"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_9}</tspan></text>
+         y="169.28629"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_9}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal"
        x="26.089029"
        y="143.09386"
        id="text1107"><tspan
@@ -531,7 +543,7 @@
          id="tspan1105"
          x="26.089029"
          y="143.09386"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.34103px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Bold';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583">8</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';text-align:start;direction:ltr;text-anchor:start;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">8</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;"
@@ -545,15 +557,15 @@
          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7.12137px;font-family:'Gen Shin Gothic';-inkscape-font-specification:'Gen Shin Gothic Medium';text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583;">{#dungeon_name_7}</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583;font-variant-east-asian:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="265.9483"
-       y="143.43611"
+       y="143.16042"
        id="text1117"><tspan
          sodipodi:role="line"
          id="tspan1115"
          x="265.9483"
-         y="143.43611"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.34103028px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;">{#count_7}</tspan></text>
+         y="143.16042"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:7px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#count_7}</tspan></text>
     <text
        xml:space="preserve"
        id="text1710"
@@ -616,7 +628,7 @@
        transform="translate(-5.5149242)">
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.4624px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:12.4624px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="267.46393"
          y="36.050594"
          id="text1702"><tspan
@@ -624,10 +636,10 @@
            id="tspan1700"
            x="267.46393"
            y="36.050594"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.4624px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#total}</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:12.46240044px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;fill:#ffffff;stroke-width:0.264583">{#total}</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12137px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, @wght=300';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 300;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="211.39583"
          y="35.990711"
          id="text1708"><tspan
@@ -635,10 +647,10 @@
            id="tspan1706"
            x="211.39583"
            y="35.990711"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.12137px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, @wght=300';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 300;fill:#ffffff;stroke-width:0.264583">Total</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583">Total</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:1.25;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="267.57498"
          y="36.050594"
          id="text6090"><tspan
@@ -646,7 +658,17 @@
            id="tspan6088"
            x="267.57498"
            y="36.050594"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Josefin Sans';-inkscape-font-specification:'Josefin Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583">k</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:8.00000022px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.264583">k</tspan></text>
     </g>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text2659"
+       style="font-family:'Baloo Da 2';font-weight:bold;font-size:48px;line-height:1.66;letter-spacing:0.16px;word-spacing:0px;text-align:center;-inkscape-font-specification:'Baloo Da 2, Bold';writing-mode:lr;white-space:pre;shape-inside:url(#rect2661)" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text38245"
+       style="font-family:'Baloo Da 2';font-weight:bold;font-size:48px;line-height:1.66;letter-spacing:0.16px;word-spacing:0px;text-align:center;-inkscape-font-specification:'Baloo Da 2, Bold';writing-mode:lr;white-space:pre;shape-inside:url(#rect38247)" />
   </g>
 </svg>
